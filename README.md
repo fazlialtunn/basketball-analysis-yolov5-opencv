@@ -9,7 +9,7 @@ If you’d like to download the full project including trained models, please fo
 ✅ Step-by-step:
 
 # 1. Clone the repository
-git clone https://github.com/fazlialtunn/basketball-analysis-yolo-opencv.git
+git clone https://github.com/fazlialtunn/basketball-analysis-yolov5-opencv.git
 
 # 2. Go into the project directory
 cd basketball-analysis-yolo-opencv
