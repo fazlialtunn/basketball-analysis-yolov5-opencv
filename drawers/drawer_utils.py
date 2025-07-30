@@ -13,7 +13,7 @@ def draw_triangle(frame, bbox, color):
         (x + 10, y - 20)
     ])
     cv2.drawContours(frame, [triangle_points], 0, color, thickness=cv2.FILLED)
-    cv2.drawContours(frame, [triangle_points], 0, color, thickness=2)
+    cv2.drawContours(frame, [triangle_points], 0, (0,0,0), thickness=2)
     return frame
 
 def draw_ellipse(frame, bbox, color, track_id=None):
