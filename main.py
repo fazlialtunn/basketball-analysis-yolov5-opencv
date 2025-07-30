@@ -4,6 +4,7 @@ from drawers import(
     PlayerTracksDrawer,
     BallTracksDrawer
 )
+from team_assigner import TeamAssigner
 
 def main():
     # read video
@@ -22,7 +23,13 @@ def main():
 
     # interpolate missing ball detections
     ball_tracks = ball_tracker.interpolate_ball_positions(ball_tracks)
-    
+
+    # assign teams to players
+    team_assigner = TeamAssigner()
+    player_teams = team_assigner.get_player_teams_across_frames(
+        video_frames, player_tracks, read_from_stub=True, stub_path="stubs/player_team_stubs.pkl"
+    )
+    print("Player teams assigned:", player_teams)
     # drawers
     player_tracks_drawer = PlayerTracksDrawer()
     ball_tracks_drawer = BallTracksDrawer()
