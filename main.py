@@ -26,16 +26,16 @@ def main():
     # interpolate missing ball detections
     ball_tracks = ball_tracker.interpolate_ball_positions(ball_tracks)
 
-    # assign teams to players
+    # assign players to teams
     team_assigner = TeamAssigner()
-    player_teams = team_assigner.get_player_teams_across_frames(
+    player_assignment = team_assigner.get_player_teams_across_frames(
         video_frames, player_tracks, read_from_stub=True, stub_path="stubs/player_team_stubs.pkl"
     )
-    print("Player teams assigned:", player_teams)
+
     # drawers
     player_tracks_drawer = PlayerTracksDrawer()
     ball_tracks_drawer = BallTracksDrawer()
-    output_video_frames = player_tracks_drawer.draw(video_frames, player_tracks)
+    output_video_frames = player_tracks_drawer.draw(video_frames, player_tracks, player_assignment)
     output_video_frames = ball_tracks_drawer.draw(output_video_frames, ball_tracks)
 
     # save video    
