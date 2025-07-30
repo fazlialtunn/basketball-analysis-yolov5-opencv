@@ -25,7 +25,6 @@ class PlayerTracker:
         if tracks is not None:
             if len(tracks) == len(frames):
                 return tracks
-            return tracks
 
         detections = self.detect_frames(frames)
         tracks = []
@@ -43,6 +42,6 @@ class PlayerTracker:
                 track_id = frame_detection[4]
 
                 if cls_id == cls_names_inv["Player"]:
-                    tracks[frame_num][track_id] = {"box": bbox}
+                    tracks[frame_num][track_id] = {"bbox": bbox}
         save_stub(stub_path, tracks)
         return tracks
