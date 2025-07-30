@@ -1,3 +1,5 @@
+import faulthandler
+faulthandler.enable()
 from utils import read_video, save_video
 from trackers import PlayerTracker, BallTracker
 from drawers import(
