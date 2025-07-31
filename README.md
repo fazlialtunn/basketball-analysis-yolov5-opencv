@@ -68,4 +68,4 @@ git lfs install
 ### 4. Download the large model files
 git lfs pull
 
-⚠️ If you skip Step 4, model files under the models/ directory will not be available for use.
+⚠️ If you skip these, model files under the models/ directory will not be available for use.
