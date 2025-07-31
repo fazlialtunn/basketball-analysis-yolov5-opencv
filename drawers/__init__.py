@@ -3,3 +3,4 @@ from .ball_tracks_drawer import BallTracksDrawer
 from .team_ball_control_drawer import TeamBallControlDrawer
 from .pass_and_interceptions_drawer import PassAndInterceptionsDrawer
 from .court_keypoints_drawer import CourtKeypointsDrawer
+from .tactical_view_drawer import TacticalViewDrawer

@@ -7,12 +7,14 @@ from drawers import(
     BallTracksDrawer,
     TeamBallControlDrawer,
     PassAndInterceptionsDrawer,
-    CourtKeypointsDrawer
+    CourtKeypointsDrawer,
+    TacticalViewDrawer
 )
 from team_assigner import TeamAssigner
 from ball_acquisition import BallAcquisitionDetector
 from pass_and_interception_detector import PassAndInterceptionDetector
 from court_keypoint_detector import CourtKeypointDetector
+from tactical_view_converter import TacticalViewConverter
 
 def main():
     # read video
@@ -51,12 +53,16 @@ def main():
     passes = pass_and_interception_detector.detect_passes(ball_acquisition, player_assignment)
     interceptions = pass_and_interception_detector.detect_interceptions(ball_acquisition, player_assignment)
 
+    # convert to tactical view
+    tactical_view_converter = TacticalViewConverter(court_image_path="./images/basketball_court.png")
+
     # initialize drawers
     player_tracks_drawer = PlayerTracksDrawer()
     ball_tracks_drawer = BallTracksDrawer()
     team_ball_control_drawer = TeamBallControlDrawer()
     pass_and_interceptions_drawer = PassAndInterceptionsDrawer()
     court_keypoints_drawer = CourtKeypointsDrawer()
+    tactical_view_drawer = TacticalViewDrawer()
 
     # draw objects
     output_video_frames = player_tracks_drawer.draw(video_frames, player_tracks, player_assignment, ball_acquisition)
@@ -70,6 +76,14 @@ def main():
 
     # draw court keypoints
     output_video_frames = court_keypoints_drawer.draw(output_video_frames, court_keypoints)
+
+    # tactical view
+    output_video_frames = tactical_view_drawer.draw(output_video_frames,
+                                                    tactical_view_converter.court_image_path,
+                                                    tactical_view_converter.width,
+                                                    tactical_view_converter.height,
+                                                    tactical_view_converter.key_points
+                                                    )
 
     # save video    
     save_video(output_video_frames, "output_videos/output_video.avi")
