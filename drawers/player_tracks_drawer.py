@@ -1,4 +1,4 @@
-from .drawer_utils import draw_ellipse
+from .drawer_utils import draw_ellipse, draw_triangle
 
 class PlayerTracksDrawer:
 
@@ -7,7 +7,7 @@ class PlayerTracksDrawer:
         self.team_1_color = team_1_color
         self.team_2_color = team_2_color
 
-    def draw(self, video_frames, tracks, player_assignment):
+    def draw(self, video_frames, tracks, player_assignment, ball_acquisition):
         output_video_frames = []
         for frame_num, frame in enumerate(video_frames):
             frame = frame.copy()
@@ -15,6 +15,7 @@ class PlayerTracksDrawer:
             player_dict = tracks[frame_num]
 
             player_assignment_for_frame = player_assignment[frame_num]
+            player_id_has_ball = ball_acquisition[frame_num]
 
             # draw player tracks
             for track_id, player in player_dict.items():
@@ -23,6 +24,9 @@ class PlayerTracksDrawer:
                     color = self.team_1_color
                 else:
                     color = self.team_2_color
+
+                if track_id == player_id_has_ball:
+                    frame = draw_triangle(frame, player["bbox"], (0,0,255))
                 frame = draw_ellipse(frame, player["bbox"], color, track_id)
             output_video_frames.append(frame)
         return output_video_frames
