@@ -56,16 +56,16 @@ If you’d like to download the full project including trained models, please fo
 
 ✅ Step-by-step:
 
-# 1. Clone the repository
+### 1. Clone the repository
 git clone https://github.com/fazlialtunn/basketball-analysis-yolov5-opencv.git
 
-# 2. Go into the project directory
+### 2. Go into the project directory
 cd basketball-analysis-yolov5-opencv
 
-# 3. Install Git LFS (only once)
+### 3. Install Git LFS (only once)
 git lfs install
 
-# 4. Download the large model files
+### 4. Download the large model files
 git lfs pull
 
 ⚠️ If you skip Step 4, model files under the models/ directory will not be available for use.
