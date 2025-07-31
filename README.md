@@ -48,7 +48,7 @@ Training notebooks are included to help you customize and fine-tune models to su
 
 ---
 
-📥 How to Clone This Project with Model Files
+## 📥 How to Clone This Project with Model Files
 
 This project uses Git LFS (Large File Storage) to store large model files.
 
