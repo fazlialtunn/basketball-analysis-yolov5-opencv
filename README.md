@@ -17,6 +17,37 @@ Training notebooks are included to help you customize and fine-tune models to su
 
 ---
 
+## 🏰 Project Structure
+
+- `main.py`  
+  – Orchestrates the entire pipeline: reading video frames, running detection/tracking, team assignment, drawing results, and saving the output video.
+
+- `trackers/`  
+  – Houses `PlayerTracker` and `BallTracker`, which use detection models to generate bounding boxes and track objects across frames.
+
+- `utils/`  
+  – Contains helper functions like `bbox_utils.py` for geometric calculations, `stubs_utils.py` for reading and saving intermediate results, and `video_utils.py` for reading/saving videos.
+
+- `drawers/`  
+  – Contains classes that overlay bounding boxes, court lines, passes, etc., onto frames.
+
+- `ball_aquisition/`  
+  – Logic for identifying which player is in possession of the ball.
+
+- `pass_and_interception_detector/`  
+  – Identifies passing events and interceptions.
+
+- `court_keypoint_detector/`  
+  – Detects lines and keypoints on the court using the specified model.
+
+- `team_assigner/`  
+  – Uses zero-shot classification (Hugging Face or similar) to assign players to teams based on jersey color.
+
+- `configs/`  
+  – Holds default paths for models, stubs, and output video.
+
+---
+
 📥 How to Clone This Project with Model Files
 
 This project uses Git LFS (Large File Storage) to store large model files.
